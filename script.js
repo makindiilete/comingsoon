@@ -8,9 +8,14 @@ const modalMessage = document.querySelector(".modal-message");
 const modalCloseBtn = document.querySelector(".modal-close-btn");
 
 function showModal(message, type = "success") {
+  // First remove any existing classes
+  modal.classList.remove("success", "error");
+
   const title = type === "success" ? "Success!" : "Oops!";
   modalTitle.textContent = title;
   modalMessage.textContent = message;
+
+  // Add new classes
   modal.classList.add("show", type);
 }
 

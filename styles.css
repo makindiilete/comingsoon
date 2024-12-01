@@ -179,23 +179,20 @@ body {
   margin-bottom: 20px;
 }
 
-.success-icon {
-  color: #4caf50;
-  display: none;
-}
-
+.success-icon,
 .error-icon {
-  color: #f44336;
   display: none;
 }
 
 .modal.success .success-icon {
   display: inline-block;
+  color: #4caf50;
   animation: scaleIn 0.3s ease;
 }
 
 .modal.error .error-icon {
   display: inline-block;
+  color: #f44336;
   animation: scaleIn 0.3s ease;
 }
 
