@@ -158,43 +158,78 @@ body {
 }
 
 .modal-content {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: white;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 20px;
   max-width: 400px;
   width: 90%;
   position: relative;
   transform: translateY(-20px);
   transition: transform 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .modal.show .modal-content {
   transform: translateY(0);
 }
 
-.close-modal {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: white;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+.modal-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
-.close-modal:hover {
-  opacity: 1;
+.success-icon {
+  color: #4caf50;
+  display: none;
+}
+
+.error-icon {
+  color: #f44336;
+  display: none;
+}
+
+.modal.success .success-icon {
+  display: inline-block;
+  animation: scaleIn 0.3s ease;
+}
+
+.modal.error .error-icon {
+  display: inline-block;
+  animation: scaleIn 0.3s ease;
+}
+
+.modal-title {
+  color: #333;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  font-weight: 600;
 }
 
 .modal-message {
-  color: white;
+  color: #666;
   font-size: 1.1rem;
-  text-align: center;
-  margin: 10px 0;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.modal-close-btn {
+  background: #764ba2;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.modal-close-btn:hover {
+  background: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
@@ -266,5 +301,18 @@ body {
   .modal-content {
     width: 95%;
     margin: 0 10px;
+    padding: 25px;
+  }
+
+  .modal-icon {
+    font-size: 42px;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+  }
+
+  .modal-message {
+    font-size: 1rem;
   }
 }

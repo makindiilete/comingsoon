@@ -3,20 +3,23 @@ const launchDate = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
 
 // Modal functionality
 const modal = document.getElementById("notificationModal");
+const modalTitle = document.querySelector(".modal-title");
 const modalMessage = document.querySelector(".modal-message");
-const closeModal = document.querySelector(".close-modal");
+const modalCloseBtn = document.querySelector(".modal-close-btn");
 
-function showModal(message) {
+function showModal(message, type = "success") {
+  const title = type === "success" ? "Success!" : "Oops!";
+  modalTitle.textContent = title;
   modalMessage.textContent = message;
-  modal.classList.add("show");
+  modal.classList.add("show", type);
 }
 
 function hideModal() {
-  modal.classList.remove("show");
+  modal.classList.remove("show", "success", "error");
 }
 
 // Close modal when clicking the close button or outside the modal
-closeModal.addEventListener("click", hideModal);
+modalCloseBtn.addEventListener("click", hideModal);
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     hideModal();
@@ -74,10 +77,13 @@ subscribeBtn.addEventListener("click", () => {
   const email = emailInput.value.trim();
   if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     // Here you would typically send this to your backend
-    showModal("Thank you for subscribing! We'll notify you when we launch.");
+    showModal(
+      "Thank you for subscribing! We'll notify you when we launch.",
+      "success"
+    );
     emailInput.value = "";
   } else {
-    showModal("Please enter a valid email address.");
+    showModal("Please enter a valid email address.", "error");
   }
 });
 
