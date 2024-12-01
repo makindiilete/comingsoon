@@ -44,6 +44,30 @@ updateCountdown();
 // Update every second
 const countdownInterval = setInterval(updateCountdown, 1000);
 
+// Modal functionality
+const modal = document.getElementById("notificationModal");
+const closeModalBtn = document.querySelector(".close-modal");
+
+// Show modal
+function showModal(message) {
+  const modalMessage = document.querySelector(".modal-message");
+  modalMessage.textContent = message;
+  modal.classList.add("show");
+}
+
+// Close modal
+function closeModal() {
+  modal.classList.remove("show");
+}
+
+// Close modal when clicking close button or outside modal
+closeModalBtn.addEventListener("click", closeModal);
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+
 // Newsletter subscription
 const emailInput = document.querySelector(".email-input");
 const subscribeBtn = document.querySelector(".subscribe-btn");
@@ -52,10 +76,10 @@ subscribeBtn.addEventListener("click", () => {
   const email = emailInput.value.trim();
   if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     // Here you would typically send this to your backend
-    alert("Thank you for subscribing! We'll notify you when we launch.");
+    showModal("Thank you for subscribing! We'll notify you when we launch.");
     emailInput.value = "";
   } else {
-    alert("Please enter a valid email address.");
+    showModal("Please enter a valid email address.");
   }
 });
 
