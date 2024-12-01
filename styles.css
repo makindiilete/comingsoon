@@ -177,21 +177,28 @@ body {
 .modal-icon {
   font-size: 48px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .success-icon,
 .error-icon {
   display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .modal.success .success-icon {
-  display: inline-block;
+  display: block;
   color: #4caf50;
   animation: scaleIn 0.3s ease;
 }
 
 .modal.error .error-icon {
-  display: inline-block;
+  display: block;
   color: #f44336;
   animation: scaleIn 0.3s ease;
 }
@@ -201,6 +208,7 @@ body {
   font-size: 1.5rem;
   margin-bottom: 10px;
   font-weight: 600;
+  margin-top: 60px;
 }
 
 .modal-message {
@@ -307,6 +315,7 @@ body {
 
   .modal-title {
     font-size: 1.3rem;
+    margin-top: 50px;
   }
 
   .modal-message {
