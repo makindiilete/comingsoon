@@ -40,8 +40,9 @@
             type="email"
             placeholder="Enter your email"
             class="email-input"
+            id="emailInput"
           />
-          <button class="subscribe-btn">Notify Me</button>
+          <button class="subscribe-btn" id="subscribeBtn">Notify Me</button>
         </div>
 
         <div class="social-links">
@@ -52,6 +53,21 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div id="notificationModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close-modal" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-body">
+          <i class="fas fa-check-circle modal-icon"></i>
+          <h2 class="modal-title">Thank you!</h2>
+          <p class="modal-message">Thank you for subscribing! We'll notify you when we launch.</p>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

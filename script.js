@@ -44,24 +44,36 @@ updateCountdown();
 // Update every second
 const countdownInterval = setInterval(updateCountdown, 1000);
 
-// Modal functionality
+// DOM Elements
 const modal = document.getElementById("notificationModal");
-const closeModalBtn = document.querySelector(".close-modal");
+const closeModalBtn = document.getElementById("closeModal");
+const emailInput = document.getElementById("emailInput");
+const subscribeBtn = document.getElementById("subscribeBtn");
 
 // Show modal
 function showModal(message) {
   const modalMessage = document.querySelector(".modal-message");
-  modalMessage.textContent = message;
-  modal.classList.add("show");
+  if (modalMessage) {
+    modalMessage.textContent = message;
+  }
+  if (modal) {
+    modal.classList.add("show");
+  }
 }
 
 // Close modal
 function closeModal() {
-  modal.classList.remove("show");
+  if (modal) {
+    modal.classList.remove("show");
+  }
 }
 
-// Close modal when clicking close button or outside modal
-closeModalBtn.addEventListener("click", closeModal);
+// Event Listeners for Modal
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", closeModal);
+}
+
+// Close modal when clicking outside
 window.addEventListener("click", (e) => {
   if (e.target === modal) {
     closeModal();
@@ -69,19 +81,17 @@ window.addEventListener("click", (e) => {
 });
 
 // Newsletter subscription
-const emailInput = document.querySelector(".email-input");
-const subscribeBtn = document.querySelector(".subscribe-btn");
-
-subscribeBtn.addEventListener("click", () => {
-  const email = emailInput.value.trim();
-  if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    // Here you would typically send this to your backend
-    showModal("Thank you for subscribing! We'll notify you when we launch.");
-    emailInput.value = "";
-  } else {
-    showModal("Please enter a valid email address.");
-  }
-});
+if (subscribeBtn) {
+  subscribeBtn.addEventListener("click", () => {
+    const email = emailInput.value.trim();
+    if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showModal("Thank you for subscribing! We'll notify you when we launch.");
+      emailInput.value = "";
+    } else {
+      showModal("Please enter a valid email address.");
+    }
+  });
+}
 
 // Add animation to countdown items
 document.querySelectorAll(".countdown-item").forEach((item, index) => {
